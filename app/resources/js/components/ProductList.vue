@@ -43,7 +43,8 @@ export default {
           cart_id: this.cartId
         })
         .then((response) => {
-          this.cartId = response.data.original.cart_id
+          let data = response.data.data.original
+          this.cartId = data.cart_id
           this.$parent.getData();
         })
         .catch((error) => {

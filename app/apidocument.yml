@@ -1,0 +1,64 @@
+openapi: 3.0.0
+info:
+  title: Sample API for get a Cart content
+  description: Api for get a cart content with its products
+  version: 1.0
+servers:
+  - url: http://www.marcodefelice.it/v1
+    description: Test server
+  - url: http://staging.marcodefelice.it/v1
+    description: Internal staging server for testing
+paths:
+  /api/carts:
+    get:
+      summary: Returns a list of cart with products inside.
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        '200':    # status code
+          description: A JSON of cart and products list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    original:
+                      type: object
+                      id:
+                        type: integer
+                      hash:
+                        type: string
+                      user_ip:
+                        type: string
+                      products:
+                        type: object
+                        id: 
+                          type: integer
+                        cart_id:
+                          type: integer
+                        product_id:
+                          type: integer
+                        quantity:
+                          type: integer
+                          product:
+                            type: object
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            description:
+                              type: string
+                            sku:
+                              type: integer
+                            price:
+                              type: object
+                              price:
+                                type: float
+                              label:
+                                type: string
+          default:
+            description: Unexpected error
