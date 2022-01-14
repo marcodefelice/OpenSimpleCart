@@ -16,17 +16,13 @@ class CartsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($all = false)
+    public function index()
     {
-      
-      if(!$all) {
-        $cart = Cart::with("products.product")->where(
-          "user_ip",
-          hash("sha256",UtilityController::get_client_ip())
-          )->get();
-      } else {
-        $cart = Cart::with("products.product")->get();
-      }
+
+      $cart = Cart::with("products.product")->where(
+        "user_ip",
+        hash("sha256",UtilityController::get_client_ip())
+        )->get();
 
       return response()->json($cart);
     }
